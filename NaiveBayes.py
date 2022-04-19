@@ -32,7 +32,7 @@ print(dataset.head())
 X = dataset[['login_count','logout_count','login_day_count','play_time','avg_money','ip_count','max_level','login_total_day_x','playtime_per_day','sit_count','exp_get_amout','item_get_count','money_get_count','killed_by_pc','killed_by_npc','teleport_count','reborn_count','question_count','login_total_day_y','sit_count_perday','item_get_count_perday','money_get_count_perday','teleport_count_perday','total_party_time','average_party_time',]] 
 y = dataset['class'] 
 
-x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 scaler = StandardScaler()
 scaler.fit(x_train)
 
