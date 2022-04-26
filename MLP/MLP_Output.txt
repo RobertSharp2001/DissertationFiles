@@ -1,0 +1,33 @@
+Python 3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+================== RESTART: C:\Users\rober\Desktop\DISS\MLP.py =================
+   login_count  logout_count  ...  average_party_time  class
+0        259.0         259.0  ...         1477.000000    0.0
+1         38.0          37.0  ...         3655.684211    0.0
+2         43.0          42.0  ...         2295.736842    0.0
+3         25.0          24.0  ...            0.000000    0.0
+4        110.0         109.0  ...         2558.375000    0.0
+
+[5 rows x 26 columns]
+
+Confusion matrix:
+[[1469   29]
+ [  38   84]]
+Classification report:
+              precision    recall  f1-score   support
+
+         0.0       0.97      0.98      0.98      1498
+         1.0       0.74      0.69      0.71       122
+
+    accuracy                           0.96      1620
+   macro avg       0.86      0.83      0.85      1620
+weighted avg       0.96      0.96      0.96      1620
+
+Time elapsed:
+1.6340138912200928
+
+Warning (from warnings module):
+  File "C:\Users\rober\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\sklearn\utils\deprecation.py", line 87
+    warnings.warn(msg, category=FutureWarning)
+FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
