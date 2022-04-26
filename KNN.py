@@ -8,15 +8,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import plot_confusion_matrix
 
 def clean_dataset(df):
     assert isinstance(df, pd.DataFrame), "df needs to be a pd.DataFrame"
     df.dropna(inplace=True)
     indices_to_keep = ~df.isin([np.nan, np.inf, -np.inf]).any(1)
     return df[indices_to_keep].astype(np.float64)
-
-
-
 
 def run():
     start = time.time();
@@ -48,16 +46,18 @@ def run():
     classifier.fit(X_train, y_train)
     y_pred = classifier.predict(X_test)
 
-
+    print("Confusion matrix:")
     print(confusion_matrix(y_test, y_pred))
+    print("Classification report:")
     print(classification_report(y_test, y_pred))
 
+    
     end = time.time()
     print("Time elapsed:")
     print(end - start)
 
-for i in range(10):
-    s = "Test number: "
-    print(s + str(i))
-    print("vvvvvvvvvvvvvvvvv")
-    run()
+    plot_confusion_matrix(classifier, X_test, y_test)
+    plt.show()
+
+
+run()

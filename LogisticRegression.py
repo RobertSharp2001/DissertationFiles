@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import plot_confusion_matrix
 
 
 def clean_dataset(df):
@@ -45,15 +46,19 @@ def run():
     logisticRegr.fit(x_train, y_train)
     predictions = logisticRegr.predict(x_test)
 
+    print("Confusion matrix:")
     print(confusion_matrix(y_test, predictions))
+    print("Classification report:")
     print(classification_report(y_test, predictions))
 
     end = time.time()
     print("Time elapsed:")
     print(end - start)
 
-for i in range(10):
-    s = "Test number: "
-    print(s + str(i))
-    print("vvvvvvvvvvvvvvvvv")
-    run()
+    plot_confusion_matrix(logisticRegr, x_test, y_test)
+    plt.show()
+
+
+
+
+run()

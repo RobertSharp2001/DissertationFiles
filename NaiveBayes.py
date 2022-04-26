@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import plot_confusion_matrix
 
 def clean_dataset(df):
     assert isinstance(df, pd.DataFrame), "df needs to be a pd.DataFrame"
@@ -43,16 +44,17 @@ def run():
     gnb.fit(x_train, y_train)
     y_pred = gnb.predict(x_test)
 
+    print("Confusion matrix:")
     print(confusion_matrix(y_test, y_pred))
+    print("Classification report:")
     print(classification_report(y_test, y_pred))
 
     end = time.time()
     print("Time elapsed:")
     print(end - start)
 
+    plot_confusion_matrix(gnb, x_test, y_test)
+    plt.show()
 
-for i in range(10):
-    s = "Test number: "
-    print(s + str(i))
-    print("vvvvvvvvvvvvvvvvv")
-    run()
+
+run()
